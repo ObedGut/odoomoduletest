@@ -1,0 +1,56 @@
+<odoo>
+  <data>
+    <!-- explicit list view definition -->
+
+    <record model="ir.ui.view" id="agendaprueba.list">
+      <field name="name">agendaprueba list</field>
+      <field name="model">agendaprueba.agendaprueba</field>
+      <field name="arch" type="xml">
+        <tree>
+          <field name="nombre"/>
+          <field name="telefono"/>
+        </tree>
+      </field>
+    </record>
+
+
+    <!-- actions opening views on models -->
+
+    <record model="ir.actions.act_window" id="agendaprueba.action_window">
+      <field name="name">agendaprueba window</field>
+      <field name="res_model">agendaprueba.agendaprueba</field>
+      <field name="view_mode">tree,form</field>
+    </record>
+
+
+    <!-- server action to the one above -->
+<!--
+    <record model="ir.actions.server" id="agendaprueba.action_server">
+      <field name="name">agendaprueba server</field>
+      <field name="model_id" ref="model_agendaprueba_agendaprueba"/>
+      <field name="state">code</field>
+      <field name="code">
+        action = {
+          "type": "ir.actions.act_window",
+          "view_mode": "tree,form",
+          "res_model": model._name,
+        }
+      </field>
+    </record>
+-->
+
+    <!-- Top menu item -->
+
+    <menuitem name="agendaprueba" id="agendaprueba.menu_root"/>
+
+    <!-- menu categories -->
+
+    <menuitem name="Menu 1" id="agendaprueba.menu_1" parent="agendaprueba.menu_root"/>
+
+    <!-- actions -->
+
+    <menuitem name="List" id="agendaprueba.menu_1_list" parent="agendaprueba.menu_1"
+              action="agendaprueba.action_window"/>
+
+  </data>
+</odoo>
